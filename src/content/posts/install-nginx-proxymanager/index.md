@@ -93,7 +93,7 @@ http://<your-server-ip>:81
 > 🔒 Be sure to update your login credentials after first login.
 
 
-<img src="{{SITE_URL}}/src/content/posts/install-nginx-proxymanager/screen1.png" 
+<img src="/images/screen1.png" 
      alt="Nginx Proxy Manager UI" 
      style="border-radius: 12px; max-width: 100%; height: auto;" />
 
