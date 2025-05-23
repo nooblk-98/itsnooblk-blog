@@ -84,6 +84,11 @@ Open your browser and go to:
 ```
 http://<your-server-ip>:81
 ```
+<img src="/images/screen2.png" 
+     alt="Nginx Proxy Manager UI" 
+     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+
+
 
 ### 5. Default Credentials
 
@@ -95,7 +100,14 @@ http://<your-server-ip>:81
 
 <img src="/images/screen1.png" 
      alt="Nginx Proxy Manager UI" 
-     style="border-radius: 12px; max-width: 100%; height: auto;" />
+     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
+:::NOTE
+Now you can add your other containers to Nginx Proxy Manager using `container_name:port`. There's no need to expose ports to the host. Your external Docker applications can communicate through the `shared Docker network`.
+:::
+
+<img src="/images/screen3.png" 
+     alt="Nginx Proxy Manager UI" 
+     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
 ---
