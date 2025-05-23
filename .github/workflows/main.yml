@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  PROJECT_NAME: portfolio-web
+  PROJECT_NAME: itsnooblk-blog
 
 jobs:
   Deploy:
