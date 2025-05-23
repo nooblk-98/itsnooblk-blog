@@ -1,9 +1,9 @@
 ---
-title: 🐳 Nginx Proxy Manager Installation Guide
+title: 🌐 Nginx Proxy Manager Installation Guide
 published: 2025-05-23
 description: 'Nginx Proxy Manager is a powerful and easy-to-use tool to manage your Nginx reverse proxy with a simple web-based UI. This guide will walk you through installing it using Docker Compose..'
-image: 'https://imgix.datadoghq.com/img/blog/monitor-docker-datadog/22.png?auto=compress%2Cformat&cs=origin&lossless=true&fit=max&q=75&w=1400&dpr=1'
-tags: [Linux, Docker]
+image: 'https://www.linuxuntu.com/wp-content/uploads/2023/05/NGINX-Logo.jpg'
+tags: [Linux, Docker, Nginx]
 category: 'Selfhosted'
 draft: false 
 lang: 'en'
