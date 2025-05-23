@@ -1,5 +1,5 @@
 ---
-title: 🐳 ShellNGN Web SSH client Docker Installation Guide
+title: 🐳 Shellngn Web SSH client Docker Installation Guide
 published: 2025-05-23
 description: 'ShellNGN is a web-based SSH and SFTP client designed for managing servers with ease. This guide covers installation using Docker.'
 image: '/images/screen4.png'
