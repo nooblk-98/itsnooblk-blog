@@ -12,15 +12,17 @@ lang: 'en'
 Create, activate, and manage swap space on a Linux server using a simple, interactive Bash script.
 
 
-## ✅ 1. `create-swap.sh` – Save the Script
+## ✅ Option 1: Quick Setup with `create-swap.sh`
 
-First, create a file named `create-swap.sh` using:
+### 📝 Save the Script
+
+Create the script file:
 
 ```bash
 nano create-swap.sh
 ```
 
-Paste the following script inside:
+Paste this script inside:
 
 ```bash
 #!/bin/bash
@@ -65,33 +67,61 @@ free -h
 
 ---
 
-## 🛠️ 2. Run Instructions
+### 🧪 Run the Script
+
 ```bash
+chmod +x create-swap.sh && ./create-swap.sh
+```
 
-# Step 2: Make it executable
-chmod +x create-swap.sh
+---
 
-# Step 3: Execute the script
-./create-swap.sh
+## 🛠️ Option 2: Manual Swap File Creation
+
+Step 1: Create a 1GB swap file (change size as needed)
+```bash
+sudo fallocate -l 1G /swapfile
+```
+OR use dd as a fallback (only if the first command is not working)
+```bash
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024 status=progress
+```
+Step 2: Secure the file
+```bash
+sudo chmod 600 /swapfile
+```
+Step 3: Set it up as swap
+```bash
+sudo mkswap /swapfile
+```
+Step 4: Enable the swap
+```bash
+sudo swapon /swapfile
+```
+Step 5: Make it permanent
+```bash
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+Step 6: Confirm it's active
+```bash
+swapon --show
+free -h
 ```
 
 ---
 
 ## ❌ To Remove the Swap File
 
-If you want to completely remove the swap file:
-
 ```bash
-sudo swapoff /swapfile
-sudo rm /swapfile
-sudo sed -i '/\/swapfile/d' /etc/fstab
+sudo swapoff /swapfile && rm /swapfile && sed -i '/\/swapfile/d' /etc/fstab
 ```
 
 ---
 
 ## 📋 Notes
 
-* Requires `sudo` privileges
-* Makes the swap file persistent via `/etc/fstab`
+* `sudo` access is required
+* Works on most modern Linux distributions
+* Automatically tries `fallocate` and falls back to `dd` if unavailable
 
 ---
