@@ -3,7 +3,7 @@ title: 🐳 Running x86_64 Docker Containers on ARM64 Architecture
 published: 2025-05-23
 description: 'Running x86_64 (amd64) Docker images on an ARM64-based VPS using QEMU emulation.'
 image: 'https://imgix.datadoghq.com/img/blog/monitor-docker-datadog/22.png?auto=compress%2Cformat&cs=origin&lossless=true&fit=max&q=75&w=1400&dpr=1'
-tags: [linx, Docker]
+tags: [Linux, Docker]
 category: 'Docker'
 draft: false 
 lang: ''
