@@ -1,9 +1,10 @@
 name: Main Deployment
 
 on:
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
+  push:
+    branches: [main]   # Deploys on every commit to the main branch
+  workflow_dispatch:    # Also allows manual deploy trigger
+
 
 env:
   PROJECT_NAME: itsnooblk-blog
