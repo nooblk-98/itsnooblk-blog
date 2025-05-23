@@ -45,11 +45,17 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "GitHub",
-			url: "https://github.com/nooblk-98", // Internal links should not include the base path, as it is automatically added
-			external: true, // Show an external link icon and will open in a new tab
+			url: "https://github.com/nooblk-98",
+			external: true,
+		},
+		{
+			name: "Portfolio",
+			url: "https://me.itsnooblk.com", 
+			external: true,
 		},
 	],
 };
+
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
