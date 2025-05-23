@@ -19,7 +19,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
-          cache: 'pnpm'
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -27,6 +26,9 @@ jobs:
       - name: Install dependencies with pnpm
         run: pnpm install --frozen-lockfile
         working-directory: app
+
+      - name: Install gulp globally (if needed)
+        run: pnpm add -g gulp
 
       - name: Build using gulp
         run: pnpm gulp build
