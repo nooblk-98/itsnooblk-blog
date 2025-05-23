@@ -3,8 +3,8 @@ title: 🐧 How to Create a Linux Swap File (Interactive Bash Script)
 published: 2025-05-23
 description: 'Running low on memory? Learn how to create, activate, and manage swap space on Linux server using a simple, interactive Bash script'
 image: ''
-tags: [linx]
-category: 'linx'
+tags: [Linux]
+category: 'Linux'
 draft: false 
 lang: 'en'
 ---
