@@ -1,18 +1,13 @@
 ---
-title: 🔐 How to Generate Your Own SSH Key Pair (RSA/ED25519)
+title: 🔐 How to Generate Your Own SSH Key Pair 
 published: 2025-05-23
 description: 'Securely connect to servers or Git platforms using SSH by generating your own key pair on your local machine.'
-image: ''
+image: 'https://miro.medium.com/v2/resize:fit:1400/1*eV6MmAeMV9DgkQv3PdOBMA.png'
 tags: [linx]
 category: 'Linux'
 draft: false 
 lang: ''
 ---
-
-## ✅ Prerequisites
-
-* A Unix-based system (Linux/macOS) or Git Bash on Windows
-* OpenSSH installed (default on most systems)
 
 ## 📦 Generate SSH Key Pair
 
@@ -61,9 +56,7 @@ ssh-add ~/.ssh/id_ed25519
 ```bash
 ssh -T git@github.com
 ```
-
+> [!NOTE]
 > Replace `github.com` with your service provider (e.g., `gitlab.com`, your server IP, etc.)
-
 ---
 
-Let me know if you want this formatted into an actual `README.md` file or customized for a specific platform like GitHub, GitLab, or a VPS.
