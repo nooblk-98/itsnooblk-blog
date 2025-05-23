@@ -27,11 +27,8 @@ jobs:
         run: pnpm install --frozen-lockfile
         working-directory: .
 
-      - name: Install gulp globally (if needed)
-        run: pnpm add -g gulp
-
-      - name: Build using gulp
-        run: pnpm gulp build
+      - name: Build using pnpm
+        run: pnpm build
         working-directory: .
 
       - name: List dist directory contents
