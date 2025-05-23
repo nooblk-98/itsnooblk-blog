@@ -25,17 +25,17 @@ jobs:
 
       - name: Install dependencies with pnpm
         run: pnpm install --frozen-lockfile
-        working-directory: app
+        working-directory: .
 
       - name: Install gulp globally (if needed)
         run: pnpm add -g gulp
 
       - name: Build using gulp
         run: pnpm gulp build
-        working-directory: app
+        working-directory: .
 
       - name: List dist directory contents
-        run: ls -la app/dist
+        run: ls -la ./dist
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@2.0.0
