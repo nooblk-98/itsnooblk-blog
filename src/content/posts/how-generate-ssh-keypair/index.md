@@ -3,7 +3,7 @@ title: 🔐 How to Generate Your Own SSH Key Pair
 published: 2025-05-23
 description: 'Securely connect to servers or Git platforms using SSH by generating your own key pair on your local machine.'
 image: 'https://miro.medium.com/v2/resize:fit:1400/1*eV6MmAeMV9DgkQv3PdOBMA.png'
-tags: [linx]
+tags: [Linux]
 category: 'Linux'
 draft: false 
 lang: ''
