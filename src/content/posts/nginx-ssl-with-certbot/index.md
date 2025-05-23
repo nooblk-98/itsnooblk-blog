@@ -1,104 +1,152 @@
 ---
-title: 🌐 Nginx SSL with Certbot (Let's Encrypt)
+title: 🌐 SSL with Certbot (Let's Encrypt)
 published: 2025-05-22
 description: 'Secure your Nginx server using Certbot and automatically configure HTTPS with Let’s Encrypt. Includes Docker reverse proxy setup and auto-renewal.'
 image: 'https://letsencrypt.org/images/LetsEncrypt-SocialShare.png'
-tags: [Nginx, SSL, Let's Encrypt, webservers]
+tags: [Nginx, SSL, Let's Encrypt, webservers, Apache]
 category: 'Webservers'
 draft: false
 lang: 'en'
 ---
 
 
-Install Nginx
+
+## 🌐 1. Install Web Server and Certbot
+
+### For Nginx:
 
 ```bash
-sudo apt update && apt install nginx
-
-````
-Install certbot
-```bash
+sudo apt update && sudo apt install nginx -y
 sudo apt install nginx certbot python3-certbot-nginx -y
 ````
----
 
-## ⚙️ 1. Create Nginx Configuration File
+### For Apache:
 
-If you want to manually control the configuration, use the following:
+```bash
+sudo apt update && sudo apt install apache2 -y
+sudo apt install apache2 certbot python3-certbot-apache -y
+```
+
+
+## ⚙️ 2. Configure Virtual Host
+
+Nginx: Create Site Config
 
 ```bash
 sudo nano /etc/nginx/sites-available/example.com.conf
 ```
 
-Paste this config:
+Paste:
 
 ```nginx
 server {
-   listen 80;
-   server_name example.com www.example.com;
-   location / {
-       proxy_pass http://127.0.0.1:8080;  # Ensure the upstream matches your app setup
-       proxy_http_version 1.1;
-       proxy_set_header Host $host;
-       proxy_set_header X-Real-IP $remote_addr;
-       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-       proxy_set_header X-Forwarded-Proto $scheme;
-       proxy_set_header Connection "";
-   }
+    listen 80;
+    server_name example.com www.example.com;
 
+    location / {
+        proxy_pass http://127.0.0.1:8080;  # Your backend app
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Connection "";
+    }
 }
 ```
 
-
-## 🔐 2. Obtain Let's Encrypt SSL Certificate
-
-Use Certbot with Nginx plugin to obtain a certificate for your domain:
-
-```bash
-sudo certbot --nginx -d example.com -d www.example.com
-```
-Enable the Nginx Site
+Enable and test config:
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
-```
-Test and Reload Nginx
-
-```bash
 sudo nginx -t
 sudo systemctl reload nginx
 ```
 
 ---
 
-## 🔐 3. Enable Auto-Renewal for SSL
+Apache: Create Site Config
 
-Certbot automatically installs a cron job or systemd timer for renewal. Verify it:
+```bash
+sudo nano /etc/apache2/sites-available/example.com.conf
+```
+
+Paste:
+
+```apache
+<VirtualHost *:80>
+    ServerName example.com
+    ServerAlias www.example.com
+
+    ProxyPreserveHost On
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+
+    ErrorLog ${APACHE_LOG_DIR}/example_error.log
+    CustomLog ${APACHE_LOG_DIR}/example_access.log combined
+</VirtualHost>
+```
+
+Enable site and required modules:
+
+```bash
+sudo a2ensite example.com.conf
+sudo a2enmod proxy proxy_http
+sudo systemctl reload apache2
+```
+
+---
+
+## 🔐 3. Obtain Let's Encrypt SSL Certificate
+
+### For Nginx:
+
+```bash
+sudo certbot --nginx -d example.com -d www.example.com
+```
+
+### For Apache:
+
+```bash
+sudo certbot --apache -d example.com -d www.example.com
+```
+
+Certbot will automatically update your config to use HTTPS.
+
+---
+
+## 4. Enable Auto-Renewal
+
+Certbot typically sets this up automatically. Confirm with:
 
 ```bash
 sudo systemctl list-timers | grep certbot
 ```
-Manual dry-run test:
+
+### Test renewal manually:
 
 ```bash
 sudo certbot renew --dry-run
 ```
 
-If needed, you can manually add a cron job:
+### Set up custom cron (if needed):
 
 ```bash
 sudo crontab -e
 ```
 
-Add the line:
+Add:
 
 ```cron
 0 3 * * * certbot renew --quiet --deploy-hook "systemctl reload nginx"
 ```
+for Apache
+```cron
+0 3 * * * certbot renew --quiet --deploy-hook "systemctl reload apache2"
+```
 
-This will:
-
-* Run `certbot renew` every day at 3:00 AM
-* Reload Nginx if a certificate is renewed
+This runs daily at 3 AM and reloads the web server if certificates are renewed.
 
 ---
+
+
