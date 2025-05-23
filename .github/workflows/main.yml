@@ -1,0 +1,44 @@
+name: Main Deployment
+
+on:
+  pull_request:
+    branches: [main] # Replace with your actual target branch
+  workflow_dispatch:
+
+env:
+  PROJECT_NAME: portfolio-web
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies with pnpm
+        run: pnpm install --frozen-lockfile
+        working-directory: app
+
+      - name: Build using gulp
+        run: pnpm gulp build
+        working-directory: app
+
+      - name: List dist directory contents
+        run: ls -la app/dist
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@2.0.0
+        with:
+          apiToken: ${{ secrets.PAGES_DEPLOY_API }}
+          accountId: ${{ secrets.PAGES_DEPLOY_ACCOUNT }}
+          workingDirectory: app
+          command: pages deploy dist --project-name=${{ env.PROJECT_NAME }}
