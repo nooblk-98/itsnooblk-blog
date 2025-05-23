@@ -33,3 +33,4 @@ jobs:
         run: pnpm dlx wrangler pages deploy dist --project-name=${{ env.PROJECT_NAME }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.PAGES_DEPLOY_API }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.PAGES_DEPLOY_ACCOUNT }}
