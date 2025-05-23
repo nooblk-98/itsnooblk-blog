@@ -2,7 +2,7 @@ name: Main Deployment
 
 on:
   pull_request:
-    branches: [main] # Replace with your actual target branch
+    branches: [main]
   workflow_dispatch:
 
 env:
@@ -35,7 +35,7 @@ jobs:
         run: ls -la ./dist
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@2.0.0
+        uses: cloudflare/wrangler-action@3
         with:
           apiToken: ${{ secrets.PAGES_DEPLOY_API }}
           accountId: ${{ secrets.PAGES_DEPLOY_ACCOUNT }}
