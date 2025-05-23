@@ -3,7 +3,7 @@ title: 🌐 SSL with Certbot (Let's Encrypt)
 published: 2025-05-22
 description: 'Secure your Nginx server using Certbot and automatically configure HTTPS with Let’s Encrypt. Includes Docker reverse proxy setup and auto-renewal.'
 image: 'https://letsencrypt.org/images/LetsEncrypt-SocialShare.png'
-tags: [Nginx, SSL, Let's Encrypt, webservers, Apache]
+tags: [Nginx, SSL, Let's Encrypt, Webservers, Apache]
 category: 'Webservers'
 draft: false
 lang: 'en'
