@@ -7,7 +7,7 @@ tags: [Cloudflare, Github]
 category: 'Github'
 ---
 
-## 📁 Step 1: Clone the Template Repository
+## 📁 Step 1: Clone the Template Repository Locally
 
 :::note
 I'm using a demo repository for this project called [`fuwari-blog`](https://github.com/saicaca/fuwari)
