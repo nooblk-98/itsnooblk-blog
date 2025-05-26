@@ -45,6 +45,51 @@ We need to build the project to identify the build folder name. I have already b
 
 ## 📁 Step 4: Create a GitHub Repository
 
+Sure! Here's the full section for `## 📁 Project File Structure` in your `README.md` with clear descriptions of each folder and file:
+
+
+## 📁 Project File Structure
+:::NOTE
+All the project files are in the root of the GitHub repo, as shown. I have designed my action file for this project structure. If you plan to put files inside a subfolder, you need to change the GitHub action as needed.
+:::
+
+```
+
+📁 
+├── .github/               # GitHub Actions CI/CD workflows
+│   └── workflows/
+│       └── main.yml       # CI/CD pipeline for deployment
+├── .vscode/               # VS Code editor settings
+├── public/                # Static assets (images, icons, favicon, etc.)
+├── scripts/               # Custom CLI scripts (e.g., post creation)
+├── src/                   # Main source directory
+│   ├── components/        # Reusable UI components
+│   ├── content/           # Blog content (posts, pages)
+│   ├── layouts/           # Layout components for pages/posts
+│   ├── pages/             # Astro routes (e.g., index, about, posts)
+│   ├── styles/            # Tailwind and custom CSS/SCSS
+│   ├── config.ts          # Site configuration (title, URL, metadata)
+│   └── index.md           # Home page content or root content file
+├── .gitattributes         # Git attributes for handling end-of-line configs
+├── .gitignore             # Files/directories to ignore in Git
+├── .npmrc                 # npm/pnpm registry and config
+├── LICENSE                # Project license (MIT)
+├── README.md              # Main README file (this one)
+├── README.xx.md           # Translated README files (ja-JP, ko, es, zh-CN, th)
+├── astro.config.mjs       # Astro project configuration
+├── biome.json             # Linter/formatter config (Biome)
+├── frontmatter.json       # Frontmatter schema definitions
+├── package.json           # Project metadata and dependencies
+├── pagefind.yml           # Pagefind (search) configuration
+├── pnpm-lock.yaml         # Lockfile for pnpm
+├── postcss.config.mjs     # PostCSS configuration
+├── svelte.config.js       # Svelte config (if Svelte components used)
+├── tailwind.config.cjs    # Tailwind CSS configuration
+├── tsconfig.json          # TypeScript configuration
+├── vercel.json            # Vercel deployment config
+
+```
+
 Push your cloned project to a **new GitHub repository** or fork the original one.
 
 ---
