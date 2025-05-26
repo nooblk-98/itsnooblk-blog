@@ -59,6 +59,10 @@ Push your cloned project to a **new GitHub repository** or fork the original one
 
 <img src="/images/screen8.png" alt="Cloudflare Direct Upload" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
+4. Download `Cloudfalre Pages Demo` by press the button 
+
+<img src="/images/screen9.png" alt="Cloudflare Pages UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+
 You can upload a `.zip` for testing, but GitHub Actions will handle deployment going forward.
 
 ---
