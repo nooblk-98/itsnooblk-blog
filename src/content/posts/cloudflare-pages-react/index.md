@@ -1,70 +1,75 @@
 ---
-title: 🌐 How Host React Project In cloudfalre pages
-published: 2025-05-23
-description: 'Nginx Proxy Manager is a powerful and easy-to-use tool to manage your Nginx reverse proxy with a simple web-based UI. This guide will walk you through installing it using Docker Compose..'
-image: 'https://www.linuxuntu.com/wp-content/uploads/2023/05/NGINX-Logo.jpg'
-tags: [Docker, Nginx]
+title: 🌐 How to Host a React Project on Cloudflare Pages with GitHub CI/CD
+published: 2025-05-24
+description: In this guide, I’ll walk you through how to host a React (Node.js-based frontend) project on Cloudflare Pages, using GitHub CI/CD for automated deployment—all for free.
+image: 'https://miro.medium.com/v2/resize:fit:1400/1*y3VjzMtW3EZwXM5YwPO6ig.png'
+tags: [Cloudflare, Nginx]
 category: 'Selfhosted'
-
-draft: false 
-lang: 'en'
 ---
 
-We can host our react nodejs based front end through cloudflare pages freely today im showing how shost sample project with github ci/cd auto update 
+## 📁 Step 1: Clone the Template Repository
 
-im using template repo  https://github.com/saicaca/fuwari to this project show case 
+:::note
+I'm using a demo repository for this project called [`fuwari-blog`](https://github.com/saicaca/fuwari)
+:::
 
-we need to clone the repo frist 
+```bash
+git clone https://github.com/saicaca/fuwari.git
+````
 
-we need to get build commmnds in my case build steps commnds are 
+---
 
+## 📦 Step 2: Install Dependencies
 
+Navigate into the project folder and install the dependencies:
+
+```bash
+cd fuwari
 pnpm install
+```
 
+---
+
+## 🛠️ Step 3: Build the Project
+
+Once dependencies are installed, build the project:
+
+```bash
 pnpm build
+```
 
-by build folder name is dist we need to know output folder name 
+✅ **Note:** The output folder is `dist` — this is important for deployment.
 
-create repo in github using this code and instaructuons or fork it from source 
+---
 
+## 📁 Step 4: Create a GitHub Repository
 
-we need create project in cloudflare aslo with cloudfalre pages 
+Push your cloned project to a **new GitHub repository** or fork the original one.
 
-you can access that page with cloudflare dashboard below image shown as 
+---
 
-<img src="/images/screen7.png" 
-     alt="Nginx Proxy Manager UI" 
-     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+## ⚙️ Step 5: Set Up Cloudflare Pages
 
-create project in pages as same name with your github repo name 
+1. Log in to your **Cloudflare Dashboard**
+2. Navigate to **Pages** → Click **Create Project**
 
-use pages and direct upload since we are gomning to automate process with ci/cd 
+<img src="/images/screen7.png" alt="Cloudflare Pages UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
-<img src="/images/screen8.png" 
-     alt="Nginx Proxy Manager UI" 
-     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+3. Select **Direct Upload** (we'll automate with CI/CD)
 
-you can download cloudflare pages demo and upload here then name your project as same as github repo name 
+<img src="/images/screen8.png" alt="Cloudflare Direct Upload" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
-<img src="/images/screen8.png" 
-     alt="Nginx Proxy Manager UI" 
-     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+You can upload a `.zip` for testing, but GitHub Actions will handle deployment going forward.
 
+---
 
-then deploy 
+## ⚙️ Step 6: GitHub Actions CI/CD Setup
 
+Create the following file in your GitHub project:
 
+📁 `.github/workflows/main.yml`
 
-after that you need to go to the github repo you previously created 
-
-now we are going to create github action file 
-
-create file called   .github\workflows\main.yml
-
-
-add content 
-
-
+```yaml
 name: Main Deployment
 
 on:
@@ -101,33 +106,84 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.PAGES_DEPLOY_API }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.PAGES_DEPLOY_ACCOUNT }}
+```
 
+Replace `itsnooblk-blog` with your actual **Cloudflare project name**.
 
-this workflow i already created with required steups for other projects this workflow need to chnage as required (some install commnds )
+---
 
+## 🔐 Step 7: Get Your Cloudflare API Credentials
 
-and also we need cloudflare pages account id and key for deploy 
+* Go to: [https://dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens)
+* Create a **Custom API Token** (recommended) or use your **Global API Key**
+* Retrieve your **Cloudflare Account ID** from the URL:
 
+### 🔍 Example
 
-go to url https://dash.cloudflare.com/profile/api-tokens to get api key 
+Go to your Cloudflare **Dashboard** → **Domain**, then copy the URL. It will look something like this:
 
-also you can use custome api key or Global API key 
+```
+https://dash.cloudflare.com/2593411e3cce1845dxxxx2b231a9af4/itsnooblk.com
+```
 
+From this URL:
 
-<img src="/images/screen10.png" 
-     alt="Nginx Proxy Manager UI" 
-     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+- **Account ID**: `2593411e3cce1845dxxxx2b231a9af4`
+- **Domain**: `itsnooblk.com`
 
+<img src="/images/screen11.png" alt="Cloudflare Account ID" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
-also you need to find account id for that wiviste cloudfalre dashboard and domain 
+---
 
-<img src="/images/screen11.png" 
-     alt="Nginx Proxy Manager UI" 
-     style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+## 🔑 Step 8: Add GitHub Secrets
 
-     in url https://dash.cloudflare.com/2593411e3cce1845dxxxx2b231a9af4/itsnooblk.com show in my url bar in this url account id is 2593411e3cce1845dxxxx2b231a9af4
+Navigate to your GitHub repository settings:
 
+👉 `https://github.com/<your-username>/<repo>/settings/secrets/actions`
 
-now we have both account api key and id now we need to add them in our github repo github action searts 
+Add the following secrets:
 
+| Secret Name            | Value                      |
+| ---------------------- | -------------------------- |
+| `PAGES_DEPLOY_API`     | Your Cloudflare API Token  |
+| `PAGES_DEPLOY_ACCOUNT` | Your Cloudflare Account ID |
 
+<img src="/images/screen12.png" alt="GitHub Secrets UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+
+---
+
+## 🚀 Step 9: Deploy Automatically on Push
+
+Push your code to trigger the deployment:
+
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
+
+Track your deployment workflow here:
+👉 `https://github.com/<your-username>/<repo>/actions`
+
+<img src="/images/screen13.png" alt="GitHub Actions UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+
+---
+
+## ✅ Step 10: View the Live Site
+
+Visit your Cloudflare Pages dashboard:
+
+👉 `https://dash.cloudflare.com/<account-id>/pages/view/<project-name>`
+
+Your site will be hosted on a `.pages.dev` subdomain by default.
+
+To connect a **custom domain**:
+
+1. Go to the **Custom Domains** tab
+2. Add and verify your domain
+
+<img src="/images/screen14.png" alt="Custom Domain Setup" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+
+---
+
+## 🎉 Done!
