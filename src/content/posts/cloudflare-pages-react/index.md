@@ -90,7 +90,7 @@ All the project files are in the root of the GitHub repo, as shown. I have desig
 
 ```
 
-Push your cloned project to a **new GitHub repository** or fork the original one.
+Push your project to a **new GitHub repository** as shown in the file structure.
 
 ---
 
