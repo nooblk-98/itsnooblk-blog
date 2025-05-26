@@ -38,8 +38,9 @@ Once dependencies are installed, build the project:
 pnpm build
 ```
 
-✅ **Note:** We need to build the project to identify the build folder name. I have already built the project and identified the build folder as `dist`. The output folder is `dist` — this is important for deployment.
-
+:::NOTE 
+We need to build the project to identify the build folder name. I have already built the project and identified the build folder as `dist`. The output folder Name is important for `CI/CD` deployment.
+:::
 ---
 
 ## 📁 Step 4: Create a GitHub Repository
