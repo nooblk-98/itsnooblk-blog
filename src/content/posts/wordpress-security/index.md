@@ -116,29 +116,44 @@ location ~* /wp-content/uploads/.*\.php$ {
 
 Append this to your `.htaccess` file:
 
+:::NOTE
+Replace `yourdomain.com` with your actual domain
+:::
+
 ```apache
-# Disable directory listing
-Options -Indexes
 
-# Block access to wp-config.php
-<Files wp-config.php>
-    order allow,deny
-    deny from all
-</Files>
-
-# Gzip Compression
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/plain text/html text/css application/javascript
+# WordPress Rules
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
 </IfModule>
 
-# Browser Caching
+# Enable Gzip Compression (Improves Speed)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/javascript application/json
+</IfModule>
+
+# Enable Browser Caching (Improves Performance)
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/x-javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 year"
     ExpiresDefault "access plus 2 days"
 </IfModule>
 
-# Block image hotlinking
+# Block Hotlinking (Prevents Image Theft)
 <IfModule mod_rewrite.c>
     RewriteEngine on
     RewriteCond %{HTTP_REFERER} !^$
@@ -146,10 +161,19 @@ Options -Indexes
     RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
 </IfModule>
 
-# Enable Keep-Alive
+# Enable Keep-Alive (Reduces Server Overhead)
 <IfModule mod_headers.c>
     Header set Connection keep-alive
 </IfModule>
+
+# Disable Directory Browsing (Security)
+Options -Indexes
+
+# Protect wp-config.php (WordPress Security)
+<Files wp-config.php>
+    order allow,deny
+    deny from all
+</Files>
 ```
 ---
 
