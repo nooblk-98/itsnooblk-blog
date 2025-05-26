@@ -1,6 +1,6 @@
 ---
 title: 🌐 How to Host a React Project on Cloudflare Pages with GitHub CI/CD
-published: 2025-05-24
+published: 2025-05-27
 description: In this guide, I’ll walk you through how to host a React (Node.js-based frontend) project on Cloudflare Pages, using GitHub CI/CD for automated deployment—all for free.
 image: 'https://www.automatetheplanet.com/wp-content/uploads/2021/05/github_actions.jpg'
 tags: [Cloudflare, Github]
@@ -53,7 +53,7 @@ Push your cloned project to a **new GitHub repository** or fork the original one
 1. Log in to your **Cloudflare Dashboard**
 2. Navigate to **Pages** → Click **Create Project**
 
-<img src="/images/screen7.png" alt="Cloudflare Pages UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
+<img src="/images/screen15.png" alt="Cloudflare Pages UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
 3. Select **Direct Upload** (we'll automate with CI/CD)
 
@@ -106,6 +106,11 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.PAGES_DEPLOY_API }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.PAGES_DEPLOY_ACCOUNT }}
+```
+`variables :`
+```yaml
+node-version: '20'  : chnage to yournode version
+PROJECT_NAME: itsnooblk-blog : your cloudflare project name 
 ```
 
 Replace `itsnooblk-blog` with your actual **Cloudflare project name**.
