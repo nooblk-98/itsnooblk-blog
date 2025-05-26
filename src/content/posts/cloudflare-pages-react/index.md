@@ -43,12 +43,7 @@ We need to build the project to identify the build folder name. I have already b
 :::
 ---
 
-## 📁 Step 4: Create a GitHub Repository
-
-Sure! Here's the full section for `## 📁 Project File Structure` in your `README.md` with clear descriptions of each folder and file:
-
-
-## 📁 Project File Structure
+## 4. 📁 Create a GitHub Repository with follwoing Project File Structure
 :::NOTE
 All the project files are in the root of the GitHub repo, as shown. I have designed my action file for this project structure. If you plan to put files inside a subfolder, you need to change the GitHub action as needed.
 :::
