@@ -38,7 +38,7 @@ Once dependencies are installed, build the project:
 pnpm build
 ```
 
-✅ **Note:** The output folder is `dist` — this is important for deployment.
+✅ **Note:** We need to build the project to identify the build folder name. I have already built the project and identified the build folder as `dist`. The output folder is `dist` — this is important for deployment.
 
 ---
 
