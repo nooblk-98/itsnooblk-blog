@@ -2,7 +2,7 @@
 title: 🔐 Ultimate Guide to Securing Your WordPress Site
 published: 2025-05-26
 description: 'This will guide you to secure your WordPress sites from malware injections, which I used in my industry to protect sites.'
-image: 'https://wordpress.org/files/2023/02/simplified.png'
+image: 'https://www.devopsschool.com/blog/wp-content/uploads/2022/03/wordpress-1024x538.png'
 tags: [Wordpress, Linux]
 category: 'Security'
 draft: false
@@ -36,9 +36,7 @@ define('DISALLOW_FILE_MODS', true);
 ```
 
 ⚠️ *Use this only if your site is stable and you handle updates manually via FTP or SSH.*
-
 ---
-
 ## ✅ 3. Harden File and Directory Permissions (Linux)
 
 SSH into your server and run:
@@ -153,22 +151,9 @@ Options -Indexes
     Header set Connection keep-alive
 </IfModule>
 ```
-
 ---
 
-## ✅ 8. Monitor File Changes Automatically
-
-Install one of these security plugins:
-
-* **Wordfence Security** – File change detection, firewall, malware scanner.
-* **iThemes Security** – Brute-force protection, file integrity monitoring.
-* **Sucuri Security** – Malware scans, audit logs, email alerts.
-
-🕵️‍♀️ *These tools notify you when a file is unexpectedly added or modified.*
-
----
-
-## ✅ 9. Disable XML-RPC (If not used)
+## ✅ 8. Disable XML-RPC (If not used)
 
 `xmlrpc.php` is often abused by bots for brute-force and DDoS attacks.
 
@@ -183,7 +168,7 @@ Install one of these security plugins:
 
 ---
 
-## ✅ 10. Use Strong Login Protections
+## ✅ 9. Use Strong Login Protections
 
 * Limit login attempts (use plugin or Nginx/Fail2Ban)
 * Use 2FA (Google Authenticator or Authy)
@@ -193,19 +178,17 @@ Install one of these security plugins:
 
 ---
 
-## ✅ 11. Regular Backups
+## ✅ 10. Regular Backups
 
 Use tools like:
 
 * **UpdraftPlus**
-* **Jetpack VaultPress**
 * **All-in-One WP Migration**
 
 ☁️ *Ensure your backups are stored off-site (Google Drive, S3, etc.).*
 
 ---
-
-## ✅ 12. Secure Database Access
+## ✅ 11. Secure Database Access
 
 In `wp-config.php`, add:
 
@@ -219,7 +202,7 @@ Also, rename your table prefix from `wp_` to something custom like `x9y_` to pro
 
 ---
 
-## ✅ 13. Enable SSL (HTTPS)
+## ✅ 12. Enable SSL (HTTPS)
 
 * Use **Let’s Encrypt** or a commercial SSL
 * Force HTTPS redirection in `.htaccess` or Nginx config
@@ -232,24 +215,16 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
 ---
 
-## ✅ 14. Keep Everything Updated
+## ✅ 13. Keep Everything Updated
 
 Outdated plugins and themes are a major attack vector.
 
 * Enable auto-updates for security releases
 * Remove unused plugins/themes
-* Set up monitoring via Jetpack or WP-CLI automation
 
 ---
-
-## ✅ 15. Optional: Use a WAF or CDN with Security
-
-Services like:
-
-* **Cloudflare**
-* **Sucuri**
-* **Patchstack**
-
-add an additional layer to detect and block suspicious traffic before it hits your server.
+:::NOTE
+Use a WAF or CDN with Security Services like:  **Cloudflare**
+:::
 
 ---
