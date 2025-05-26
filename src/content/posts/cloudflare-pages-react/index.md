@@ -44,9 +44,7 @@ We need to build the project to identify the build folder name. I have already b
 ---
 
 ## 4. 📁 Create a GitHub Repository with follwoing Project File Structure
-:::NOTE
-All the project files are in the root of the GitHub repo, as shown. I have designed my action file for this project structure. If you plan to put files inside a subfolder, you need to change the GitHub action as needed.
-:::
+
 
 ```
 
@@ -84,6 +82,9 @@ All the project files are in the root of the GitHub repo, as shown. I have desig
 ├── vercel.json            # Vercel deployment config
 
 ```
+:::NOTE
+All the project files are in the root of the GitHub repo, as shown. I have designed my action file for this project structure. If you plan to put files inside a subfolder, you need to change the GitHub action as needed.
+:::
 
 Push your project to a **new GitHub repository** as shown in the file structure.
 
