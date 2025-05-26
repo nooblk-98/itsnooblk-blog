@@ -1,0 +1,265 @@
+---
+title: 🔐 Ultimate Guide to Securing Your WordPress Site
+published: 2025-05-26
+description: 'This will guide you to secure your WordPress sites from malware injections, which I used in my industry to protect sites.'
+image: 'https://wordpress.org/files/2023/02/simplified.png'
+tags: [Wordpress, Linux]
+category: 'Security'
+draft: false
+lang: 'en'
+---
+
+In this post, I’ll walk through **essential best practices** to secure your WordPress installation, protect sensitive files, and monitor for changes or breaches. We'll also include advanced server-level hardening tips that **I** used in **the** industry.
+
+---
+
+## ✅ 1. Disable File Editing from wp-admin
+
+By default, WordPress allows admin users to edit theme and plugin files directly from the dashboard—**a major risk** if an attacker gains access.
+
+**Add this to `wp-config.php`:**
+
+```php
+define('DISALLOW_FILE_EDIT', true);
+```
+
+📌 *Removes "Theme Editor" and "Plugin Editor" from admin.*
+
+---
+
+## ✅ 2. Disable Plugin and Theme Installation & Updates
+
+To prevent installation or updating of themes and plugins from the dashboard:
+
+```php
+define('DISALLOW_FILE_MODS', true);
+```
+
+⚠️ *Use this only if your site is stable and you handle updates manually via FTP or SSH.*
+
+---
+
+## ✅ 3. Harden File and Directory Permissions (Linux)
+
+SSH into your server and run:
+
+```bash
+cd /var/www/html  # Replace with your path
+
+# Set proper file permissions
+find . -type f -exec chmod 644 {} \;
+
+# Set proper directory permissions
+find . -type d -exec chmod 755 {} \;
+
+# Lock sensitive files
+chmod 600 wp-config.php
+chmod 644 .htaccess
+```
+
+---
+
+## ✅ 4. Lock Critical Files with `chattr` (Immutable Attribute)
+
+`chattr` prevents even root users or malware from modifying files:
+
+```bash
+sudo chattr +i wp-config.php
+sudo chattr +i .htaccess
+```
+
+To unlock:
+
+```bash
+sudo chattr -i wp-config.php
+```
+
+🛡️ This defends against common malware that rewrites `.htaccess` or config files.
+
+---
+
+## ✅ 5. Lock Core Directories (Advanced)
+
+If you're not making frequent changes:
+
+```bash
+sudo chattr -R +i wp-includes
+sudo chattr -R +i wp-admin
+```
+
+❌ *Do not apply this to `wp-content/uploads`, or media uploads will break.*
+
+---
+
+## ✅ 6. Block PHP Execution in Uploads
+
+Prevent attackers from uploading backdoor scripts:
+
+📍For Apache (`/wp-content/uploads/.htaccess`):
+
+```apache
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+```
+
+📍For Nginx:
+
+```nginx
+location ~* /wp-content/uploads/.*\.php$ {
+    deny all;
+}
+```
+
+---
+
+## ✅ 7. Secure `.htaccess` Rules
+
+Append this to your `.htaccess` file:
+
+```apache
+# Disable directory listing
+Options -Indexes
+
+# Block access to wp-config.php
+<Files wp-config.php>
+    order allow,deny
+    deny from all
+</Files>
+
+# Gzip Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/css application/javascript
+</IfModule>
+
+# Browser Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# Block image hotlinking
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?yourdomain.com [NC]
+    RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
+</IfModule>
+
+# Enable Keep-Alive
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+```
+
+---
+
+## ✅ 8. Monitor File Changes Automatically
+
+Install one of these security plugins:
+
+* **Wordfence Security** – File change detection, firewall, malware scanner.
+* **iThemes Security** – Brute-force protection, file integrity monitoring.
+* **Sucuri Security** – Malware scans, audit logs, email alerts.
+
+🕵️‍♀️ *These tools notify you when a file is unexpectedly added or modified.*
+
+---
+
+## ✅ 9. Disable XML-RPC (If not used)
+
+`xmlrpc.php` is often abused by bots for brute-force and DDoS attacks.
+
+📍Add to `.htaccess`:
+
+```apache
+<Files xmlrpc.php>
+    order deny,allow
+    deny from all
+</Files>
+```
+
+---
+
+## ✅ 10. Use Strong Login Protections
+
+* Limit login attempts (use plugin or Nginx/Fail2Ban)
+* Use 2FA (Google Authenticator or Authy)
+* Change `/wp-login.php` URL using plugins like *WPS Hide Login*
+* Rename the default admin username
+* Use long, random passwords for all accounts
+
+---
+
+## ✅ 11. Regular Backups
+
+Use tools like:
+
+* **UpdraftPlus**
+* **Jetpack VaultPress**
+* **All-in-One WP Migration**
+
+☁️ *Ensure your backups are stored off-site (Google Drive, S3, etc.).*
+
+---
+
+## ✅ 12. Secure Database Access
+
+In `wp-config.php`, add:
+
+```php
+define('DB_USER', 'yourdbuser');
+define('DB_PASSWORD', 'strongpassword');
+define('DB_HOST', 'localhost');
+```
+
+Also, rename your table prefix from `wp_` to something custom like `x9y_` to protect from SQL injection bots.
+
+---
+
+## ✅ 13. Enable SSL (HTTPS)
+
+* Use **Let’s Encrypt** or a commercial SSL
+* Force HTTPS redirection in `.htaccess` or Nginx config
+
+```apache
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+```
+
+---
+
+## ✅ 14. Keep Everything Updated
+
+Outdated plugins and themes are a major attack vector.
+
+* Enable auto-updates for security releases
+* Remove unused plugins/themes
+* Set up monitoring via Jetpack or WP-CLI automation
+
+---
+
+## ✅ 15. Optional: Use a WAF or CDN with Security
+
+Services like:
+
+* **Cloudflare**
+* **Sucuri**
+* **Patchstack**
+
+add an additional layer to detect and block suspicious traffic before it hits your server.
+
+---
+
+## Final Thoughts
+
+> WordPress security isn’t just about installing a plugin—**it’s about layered protection, vigilance, and best practices.**
+
+The above hardening techniques will significantly reduce your attack surface and help prevent malicious code changes, injections, and takeovers.
+
+Would you like a **Bash script** that applies most of these steps automatically on a Linux server?
+
+Let me know and I’ll generate it for you.
