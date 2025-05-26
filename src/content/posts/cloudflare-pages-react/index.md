@@ -59,7 +59,7 @@ Push your cloned project to a **new GitHub repository** or fork the original one
 
 <img src="/images/screen8.png" alt="Cloudflare Direct Upload" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
-4. Download `Cloudfalre Pages Demo` by press the button 
+4. Download `Cloudfalre Pages Demo` by pressing the button, give the project a name, and upload the downloaded demo zip from Cloudflare Temporary.
 
 <img src="/images/screen9.png" alt="Cloudflare Pages UI" style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
 
