@@ -43,8 +43,7 @@ We need to build the project to identify the build folder name. I have already b
 :::
 ---
 
-## 4. 📁 Create a GitHub Repository with follwoing Project File Structure
-
+## 📁 Step 4: Create a GitHub Repository with the Following Project File Structure
 
 ```
 
