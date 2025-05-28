@@ -116,8 +116,8 @@ In this example, a job named `build` will run on the latest version of an Ubuntu
 :::note
 In this example, the workflow includes two separate jobs:
 
-* build-and-push: Handles building the application and pushing the Docker image (or artifacts) to a repository.
-* deploy-to-live: Responsible for deploying the built code or image to the live environment.
+* `build-and-push`: Handles building the application and pushing the Docker image (or artifacts) to a repository.
+* `deploy-to-live`: Responsible for deploying the built code or image to the live environment.
 
 Each job runs independently or sequentially, depending on how you define dependencies between them.
 :::
