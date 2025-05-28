@@ -1,5 +1,5 @@
 ---
-title: 🌐 Getting Started with GitHub Workflows, A Beginner’s Guide
+title: 💻 Getting Started with GitHub Workflows, A Beginner’s Guide
 published: 2025-05-28
 description: GitHub Workflows are part of GitHub Actions, a powerful CI/CD (Continuous Integration and Continuous Deployment) tool built into GitHub. If you've ever wanted to automate your development process
 image: 'https://www.automatetheplanet.com/wp-content/uploads/2021/05/github_actions.jpg'
