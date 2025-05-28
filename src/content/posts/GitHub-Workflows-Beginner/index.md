@@ -295,7 +295,10 @@ You can trigger a workflow by:
 To test manually:
 
 ```yaml
+
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 ```
 
