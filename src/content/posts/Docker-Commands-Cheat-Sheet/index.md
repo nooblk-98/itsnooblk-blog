@@ -124,7 +124,9 @@ docker volume prune
 
 # Remove everything (use with caution!)
 docker system prune
+```
 
+```bash
 # Remove everything including volumes (use with more caution!)
 docker system prune -a --volumes
 ```
