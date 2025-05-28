@@ -100,8 +100,6 @@ You can customize this to trigger on other events like `pull_request`, `schedule
 * `jobs`: Defines a set of tasks (jobs) that will be executed as part of the workflow.
   Each job runs independently (unless dependencies are defined), and can be assigned a name, operating system, and a set of steps.
 
-Example:
-
 ```yml
 jobs:
   build:
@@ -110,6 +108,13 @@ jobs:
 
 In this example, a job named `build` will run on the latest version of an Ubuntu runner provided by GitHub. You can name the job anything and choose other environments like `windows-latest` or `macos-latest` depending on your requirements.
 
+Also, you can use different OS versions as needed.
+```yml
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+```
+---
 <img src="/images/GitHub-Workflows-Beginner/2.png" 
      alt="Nginx Proxy Manager UI" 
      style="border-radius: 12px; max-width: 100%; height: auto; border: 2px solid black;" />
