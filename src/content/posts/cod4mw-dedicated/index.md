@@ -25,7 +25,7 @@ Before you begin, ensure you have:
 
 ## 🐳 Step 1: Install Docker & Docker Compose
 
-If you haven’t installed Docker yet, follow my detailed guide here:
+If you haven’t installed Docker and Docker Compose yet, follow my step-by-step guide here: [install-docker](https://itsnooblk.com/posts/install-docker/)
 
 ---
 
