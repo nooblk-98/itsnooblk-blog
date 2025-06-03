@@ -144,9 +144,6 @@ To test your server:
 
 * Modify server rules and gameplay settings by editing config files under `/root/cod4x/Mods/<mod_name>/`.
 
-
-Great! Here's an additional section for your blog post that **explains how to add and run a custom mod** in your COD4 Docker server setup:
-
 ---
 
 ## 🧩 How to Add and Run a Custom Mod in COD4
