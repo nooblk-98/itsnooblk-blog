@@ -25,8 +25,7 @@ Before you begin, ensure you have:
 
 ## 🐳 Step 1: Install Docker & Docker Compose
 
-If you haven’t installed Docker and Docker Compose yet, follow my step-by-step guide here: [install-docker](https://itsnooblk.com/posts/install-docker/)
-
+If you haven’t installed Docker and Docker Compose yet, follow my step-by-step guide here: 🔧 [install-docker](https://itsnooblk.com/posts/install-docker/)
 ---
 
 ## 📁 Step 2: Prepare Server Directory Structure
