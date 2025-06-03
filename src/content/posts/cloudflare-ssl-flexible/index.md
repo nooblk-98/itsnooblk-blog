@@ -2,7 +2,7 @@
 title: 🌐 Cloudflare SSL with Nginx (Flexible)
 published: 2025-05-21
 description: 'Configure your server to work with Cloudflare in Flexible SSL mode using Nginx as a reverse proxy.'
-image: 'https://sypstudios.com/wp-content/uploads/2024/08/1QBPqde1t6ReWoy8U4jE.webp'
+image: 'https://weeblytutorials.com/wp-content/uploads/2018/01/Using-Weebly-with-CloudFlare.jpg'
 tags: [Cloudflare, SSL, Webservers]
 category: 'Webservers'
 draft: false

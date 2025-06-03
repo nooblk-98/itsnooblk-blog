@@ -2,7 +2,7 @@
 title: 🌐 Cloudflare SSL with Nginx (Full Strict)
 published: 2025-05-22
 description: 'Secure your server using Cloudflare Origin CA Certificate and configure Nginx for Full (Strict) SSL mode with reverse proxy.'
-image: 'https://sypstudios.com/wp-content/uploads/2024/08/1QBPqde1t6ReWoy8U4jE.webp'
+image: 'https://weeblytutorials.com/wp-content/uploads/2018/01/Using-Weebly-with-CloudFlare.jpg'
 tags: [Cloudflare, SSL, Webservers]
 category: 'Webservers'
 draft: false
