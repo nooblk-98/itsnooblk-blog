@@ -225,3 +225,11 @@ This tells the server to:
 * Automatically start map rotation
 
 ---
+
+<div align="center"><h1><i>Join My Server and Enjoy!</i></h1>
+    <a href="https://www.gametracker.com/server_info/18.138.25.45:28960/" target="_blank">
+        <img src="https://cache.gametracker.com/server_info/18.138.25.45:28960/b_560_95_1.png" border="0" width="560" height="95" alt=""/>
+    </a>
+</div>
+
+---
