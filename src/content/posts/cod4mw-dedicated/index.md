@@ -3,8 +3,8 @@ title: 🎮 Host a Call of Duty 4 MW Dedicated Server with Docker
 published: 2025-06-03
 description: 'how to set up a fully functional Call of Duty 4: Modern Warfare dedicated server using Docker. This guide covers everything from server preparation and mod installation to Linux server with Docker Compose configuration '
 image: 'https://gaming-cdn.com/images/products/6936/616x353/call-of-duty-modern-warfare-remastered-remastered-playstation-4-game-playstation-store-europe-cover.jpg'
-tags: [Linux, Games]
-category: 'linux'
+tags: [Linux, Games, Docker]
+category: 'Linux'
 draft: false
 lang: 'en'
 ---
