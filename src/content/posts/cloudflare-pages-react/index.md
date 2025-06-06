@@ -1,6 +1,6 @@
 ---
 title: 🌐 How to Host a React Project on Cloudflare Pages with GitHub CI/CD
-published: 2025-05-27
+published: 2025-05-24
 description: In this guide, I’ll walk you through how to host a React (Node.js-based frontend) project on Cloudflare Pages, using GitHub CI/CD for automated deployment—all for free.
 image: 'https://www.automatetheplanet.com/wp-content/uploads/2021/05/github_actions.jpg'
 tags: [Cloudflare, Github]
