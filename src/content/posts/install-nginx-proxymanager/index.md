@@ -9,10 +9,6 @@ category: 'Selfhosted'
 draft: false 
 lang: 'en'
 ---
-
-Here’s a clean and professional `README.md` guide to install **Nginx Proxy Manager** using Docker Compose:
-
----
 ## 📦 Requirements
 
 - Docker installed  
